@@ -1,0 +1,25 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+  <a class="navbar-brand" href="#">
+    <img
+      src="https://i7.pngguru.com/preview/546/46/380/weather-forecasting-severe-weather-storm-weather-png-free-download.jpg"
+      width="30" height="30" alt="logo">
+    Weather News Inc
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-2"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbar-list-2">
+    <ul class="navbar-nav">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/']">Home</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/weather']">Weather</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/news']">News</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,14 @@
+<div class="row-padding text-center" style=" margin-bottom: 150px; margin-top:20px; color:#272443; text-align: center;">
+    <h1>Know Your Location Weather And News</h1>
+</div>
+<div class="row text-center">
+    <div *ngFor="let element of elements" class="col-xs-12 col-md-4 offset-md-1"
+        style="height: 200px; background-color:#272443; border-radius: 2%; color : white; border: 1px solid white;">
+        <a [routerLink]="element.link" onMouseOver="this.style.color='#FFF'" onMouseOver="this.style.color='#FFF'"
+            style="color: white;">
+            <h3>{{element.name}}</h3>
+            <hr style="background-color: white;">
+            <i [class]="element.class"></i>
+        </a>
+    </div>
+</div>
