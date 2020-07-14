@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-country',
@@ -8,8 +9,12 @@ import { WeatherService } from '../weather.service';
 })
 export class UserCountryComponent implements OnInit {
   ipAddress: string;
-
-  constructor(private weatherService: WeatherService) { }
+  country: string;
+  flag: string;
+  countryCode: string;
+  temp = null;
+  isLoading = false;
+  constructor(private weatherService: WeatherService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.weatherService.getIPAddress().subscribe((response: any) => {
@@ -18,7 +23,21 @@ export class UserCountryComponent implements OnInit {
     })
   }
   getCountry() {
-    console.log("button is clicked from user-country componenet")
+    this.isLoading = true;
+    this.weatherService.getDataByIp(this.ipAddress).subscribe((response: any) => {
+      this.country = response.country_name;
+      this.flag = response.location["country_flag"];
+      this.weatherService.countryCode = response.country_code;
+      this.weatherService.getTemp(this.country).subscribe((response: any) => {
+        this.isLoading = false;
+        this.temp = response.current.temp_c;
+      });
+    });
+  }
+  getNearestCapital() {
+    this.router.navigate(['nearest-cities'],{relativeTo : this.route});
+    
+
   }
 
 }
